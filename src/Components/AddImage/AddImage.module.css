@@ -1,0 +1,56 @@
+.form {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.form input:not([type=submit]) {
+    margin-right: 20px;
+    flex-grow: 1;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.form input[type=submit] {
+    background-color: #eeeeee;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form input[type=submit]:hover {
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dragZone {
+    padding: 20px;
+    border: 2px dashed #eeeeee;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.warning {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    color: darkred;
+}
+
+@media (max-width: 768px) {
+    .form {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+@media (max-width: 560px) {
+    .gallery__item {
+        max-width: 100%;
+    }
+}

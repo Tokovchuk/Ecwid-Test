@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect, useState} from "react";
+import AddImage from "./Components/AddImage/AddImage";
+import Gallery from "./Components/Gallery/Gallery";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+    const [items, setItems] = useState([]);
+    const onSubmit = (data) => {
+        setItems([...items, data]);
+    }
+
+    useEffect(() => {
+        fetch("https://don16obqbay2c.cloudfront.net/frontend-test-task/gallery-images.json")
+            .then(res => res.json())
+            .then(data => setItems(data.galleryImages))
+    }, []);
+
+    const deleteImage = (e) => {
+        const currentUrl = e.target.previousSibling.currentSrc
+        setItems(items.filter(item => { return item.url !== currentUrl }));
+    }
+
+
+    return (
+        <div className='appWrapper'>
+            <h1>Gallery</h1>
+            <AddImage onSubmit={onSubmit} />
+            <Gallery items={items} deleteImage={deleteImage}/>
+        </div>
+    )
 }
 
 export default App;
