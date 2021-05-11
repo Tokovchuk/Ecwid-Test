@@ -1,12 +1,10 @@
 import React from "react";
-import style from '../AddImage.module.css'
 
 const DragAndDropZone = (props) => {
 
     const addLocalImageToGallery = (e) => {
         e.preventDefault();
         let files = e.dataTransfer.files;
-        console.log(files)
         let reader = new FileReader()
 
         reader.onloadend = () => {
@@ -17,7 +15,6 @@ const DragAndDropZone = (props) => {
                     url: reader.result
                 }
             });
-            console.log(data)
             props.onSubmit(data[0])
         }
         reader.readAsDataURL(files[0]);
@@ -34,7 +31,7 @@ const DragAndDropZone = (props) => {
     }
 
     return (
-        <div className={style.dragZone}
+        <div className='dragZone'
              onDragEnter={dragEnter}
              onDragLeave={dragLeave}
              onDragOver={dragOver}

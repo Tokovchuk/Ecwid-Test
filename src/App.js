@@ -1,12 +1,14 @@
-import './App.css';
+import './SCSS/style.scss';
 import React, {useEffect, useState} from "react";
 import AddImage from "./Components/AddImage/AddImage";
 import Gallery from "./Components/Gallery/Gallery";
 
 const App = () => {
     const [items, setItems] = useState([]);
+    const [text, setText] = useState('')
     const onSubmit = (data) => {
         setItems([...items, data]);
+        setText('');
     }
 
     useEffect(() => {
@@ -24,7 +26,7 @@ const App = () => {
     return (
         <div className='appWrapper'>
             <h1>Gallery</h1>
-            <AddImage onSubmit={onSubmit} />
+            <AddImage onSubmit={onSubmit} text={text} setText={setText}/>
             <Gallery items={items} deleteImage={deleteImage}/>
         </div>
     )
