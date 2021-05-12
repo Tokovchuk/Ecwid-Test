@@ -5,7 +5,8 @@ import Gallery from "./Components/Gallery/Gallery";
 
 const App = () => {
     const [items, setItems] = useState([]);
-    const [text, setText] = useState('')
+    const [text, setText] = useState('');
+
     const onSubmit = (data) => {
         setItems([...items, data]);
         setText('');
